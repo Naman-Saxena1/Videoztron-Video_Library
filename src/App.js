@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      This is development branch.
+      This is home page branch.
     </div>
   );
 }
