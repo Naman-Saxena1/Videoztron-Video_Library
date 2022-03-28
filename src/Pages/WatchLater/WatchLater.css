@@ -1,0 +1,13 @@
+.watch-later-container
+{
+    padding-top: 3rem;
+    min-height: calc(100vh - 107.23px);
+    grid-column: 2/3;
+}
+
+@media only screen and (max-width:1015px){
+    .watch-later-container
+    {
+        min-height: calc(100vh - 157.23px);
+    }
+}

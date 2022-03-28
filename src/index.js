@@ -1,12 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import { ToastContextProvider } from './Context/toast-context';
+import { UserLoginContextProvider } from './Context/user-login-context'
 import reportWebVitals from './reportWebVitals';
+
+export { useToast } from './Context/toast-context';
+export { useUserLogin } from './Context/user-login-context'
+
+export { Navbar } from "./Components/Navbar/Navbar"
+export { Toast } from './Components/Toast/Toast'
+export { Sidebar } from './Components/Sidebar/Sidebar'
+
+export { Home } from "./Pages/Home/Home"
+export { Login } from "./Pages/AuthenticationPages/Login"
+export { Signup } from "./Pages/AuthenticationPages/Signup"
+export { VideoListingPage } from "./Pages/VideoListingPage/VideoListingPage"
+export { WatchLater } from "./Pages/WatchLater/WatchLater"
+export { AllPlaylistPage } from "./Pages/AllPlaylistPage/AllPlaylistPage"
+export { History } from "./Pages/History/History"
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <UserLoginContextProvider>
+      <ToastContextProvider>
+        <App/>
+      </ToastContextProvider>
+    </UserLoginContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
