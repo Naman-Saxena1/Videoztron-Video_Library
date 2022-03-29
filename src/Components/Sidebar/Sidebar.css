@@ -36,6 +36,18 @@
     cursor: pointer;
 }
 
+.active-sidebar-option
+{
+    color: white;
+    background-color: var(--pink-color);
+}
+
+.active-sidebar-option:hover
+{
+    background-color: var(--royal-blue);
+    cursor: pointer;
+}
+
 .sidebar-options-icons
 {
     margin-right: 2rem;

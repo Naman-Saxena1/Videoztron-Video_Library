@@ -1,14 +1,18 @@
 import React,{ useEffect } from 'react'
-import { Link } from "react-router-dom"
 import axios from "axios"
 import jwt_decode from "jwt-decode"
-import { useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import './Home.css'
 import {
-  Sidebar
+  Sidebar, 
+  VideoCard, 
+  Footer,
+  useTrendingVideos
 } from '../../index'
+import sherlock from '../../Assets/images/sherlock4.jpg'
 
 function Home() {
+  const { trendingVideosList } = useTrendingVideos()
 
   const { pathname } = useLocation();
 
@@ -53,7 +57,35 @@ function Home() {
     <div className='page-container'>
       <Sidebar/>
       <div className='home-page-container'>
-        <p>This is Home Page.</p>
+        
+        <div className='home-page-cover-container'>
+          <img className="home-page-cover-img" src={sherlock} alt="sherlock shot"></img>
+          <div className='home-page-cover-description'>
+            <h3>Best Detective show</h3>
+            <p>Watch Sherlock Final Problem scene</p>
+            <button className="solid-secondary-btn red-solid-btn">
+              Watch Now
+            </button>
+          </div>
+        </div>
+
+        <h2 className='homepage-trending-heading'>Trending Videos</h2>
+        <div className='videos-container'>
+          {
+            trendingVideosList.map((video,index)=>
+                <VideoCard key={index} video={video}/>
+            )
+          }
+        </div>
+
+        <Link to="/explore">
+          <button className="solid-secondary-btn red-solid-btn explore-btn">
+                Explore all
+          </button>
+        </Link>
+
+        <Footer/>
+
       </div>
     </div>
   )

@@ -1,0 +1,29 @@
+.tabs
+{
+    height: 5.6rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.tab-buttons
+{
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-family: Comfortaa;
+}
+
+/* .active-tab::before
+{
+    color: white;
+    background-color: black;
+}  */
+
+.active-tab
+{
+    color: white;
+    background-color: var(--dark-grey-2);
+}

@@ -5,10 +5,15 @@ import jwt_decode from "jwt-decode"
 import { useLocation } from "react-router-dom"
 import './VideoListingPage.css'
 import {
-  Sidebar
+  Sidebar,
+  Tabs,
+  useAllVideos,
+  VideoCard
 } from '../../index'
 
 function VideoListingPage() {
+
+  const { allVideosList, filteredVideosList } = useAllVideos()
 
   const { pathname } = useLocation();
 
@@ -20,7 +25,17 @@ function VideoListingPage() {
     <div className='page-container'>
       <Sidebar/>
       <div className='video-listing-page-container'>
-        <p>This is Video Listing Page for explore option.</p>
+        <Tabs/>
+        <hr></hr>
+        <div className='video-listing-page-main-container'>
+          <div className='videos-container'>
+            {
+              filteredVideosList.map((video,index)=>
+                  <VideoCard key={index} video={video}/>
+              )
+            }
+          </div>
+        </div>
       </div>
     </div>
   )
