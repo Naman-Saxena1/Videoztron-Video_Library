@@ -1,6 +1,5 @@
 .watch-later-container
 {
-    padding-top: 3rem;
     min-height: calc(100vh - 107.23px);
     grid-column: 2/3;
 }

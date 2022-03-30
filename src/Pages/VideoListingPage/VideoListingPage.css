@@ -1,6 +1,5 @@
 .video-listing-page-container
 {
-    padding-top: 3rem;
     min-height: calc(100vh - 107.23px);
     grid-column: 2/3;
 }
@@ -10,4 +9,9 @@
     {
         min-height: calc(100vh - 157.23px);
     }
+}
+
+.video-listing-page-main-container
+{
+    padding: 2rem 6rem;
 }

@@ -1,0 +1,33 @@
+.footer-container
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    width: 100%;
+    min-height: 50vh;
+    margin-top: 7rem;
+    padding: 6rem 10rem;
+    justify-content: center;
+    align-items: flex-start;
+    grid-template-columns: repeat(3, 1fr);
+    color: white;
+    background-color: var(--dark-grey-2);
+}
+
+.footer-list
+{
+    padding: 0;
+    list-style: none;
+}
+
+.footer-list p
+{
+    color: var(--dull-grey);
+    cursor: pointer;
+}
+
+.footer-list p:hover
+{
+    color: white;
+}

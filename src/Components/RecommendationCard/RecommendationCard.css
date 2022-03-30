@@ -1,0 +1,40 @@
+.recommendation-thumbnail
+{
+    width: 16.8rem;
+    height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.recommendation-item-details
+{
+    width: 22.6rem;
+    height: 100%;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.recommendation-item-title
+{
+    text-align: left;
+    width: 22.6rem;
+    margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.recommendation-item-details h5
+{
+    margin: 0;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.owner-verified-icon
+{
+    font-size: 20px;
+    padding-top: 1rem;
+}

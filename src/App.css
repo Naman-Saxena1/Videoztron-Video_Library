@@ -80,3 +80,40 @@ a:hover::after
         min-height: calc(100vh - 157.23px);
     }
 }
+
+.videos-container
+{
+    width:100%;
+    min-height: 40rem;
+    display: grid;
+    justify-content: space-between;
+    gap: 4rem;
+    grid-template-columns: repeat(auto-fit,29.6rem);
+}
+
+.red-solid-btn
+{
+    width: fit-content;
+    color: var(--pure-white);
+    background-color: var(--red-color);
+}
+
+.red-solid-btn 
+{
+    background-position: center;
+    transition: background 0.5s;
+}
+
+.red-solid-btn:hover 
+{
+    background: var(--red-color)
+                radial-gradient(circle, transparent 1%, 
+                                    var(--red-color) 1%) center/15000%;
+}
+
+.red-solid-btn:active 
+{
+    background-color: var(--red-color);
+    background-size: 100%;
+    transition: background 0s;
+}
