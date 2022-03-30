@@ -7,12 +7,17 @@ import {
   Login,
   Signup,
   VideoListingPage,
+  VideoPage,
   WatchLater,
   AllPlaylistPage,
   History
 } from "./index"
 
 function App() {
+
+  window.YTConfig = {
+    host: 'https://www.youtube.com' 
+  } 
 
   return (
     <Router>
@@ -23,6 +28,7 @@ function App() {
           <Route path="/login"          element={<Login/>} />
           <Route path="/signup"         element={<Signup/>} />
           <Route path="/explore"        element={<VideoListingPage/>} />
+          <Route path="/video/:id"      element={<VideoPage/>}/>
           <Route path="/watch-later"    element={<WatchLater/>} />
           <Route path="/playlist"       element={<AllPlaylistPage/>} />
           <Route path="/history"        element={<History/>} />

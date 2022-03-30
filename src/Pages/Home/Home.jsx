@@ -53,6 +53,21 @@ function Home() {
       }   
   },[])
 
+  let covervideo = {
+    "_id": "62430b3be22ce0735254b2a5",
+    "videoSrcUrl": "https://www.youtube.com/watch?v=5z32qzSqtXY",
+    "title": "Sherlock plays the violin for the Eurus (Sherlok 4: The final problem)",
+    "owner": "Mystery Strings",
+    "thumbnail": "https://img.youtube.com/vi/5z32qzSqtXY/0.jpg",
+    "description": "",
+    "views": 1582160,
+    "noOfLikes": 29000,
+    "noOfDislikes": 2410,
+    "comments": [],
+    "__v": 0,
+    "category": "crime"
+  }
+
   return (
     <div className='page-container'>
       <Sidebar/>
@@ -63,9 +78,11 @@ function Home() {
           <div className='home-page-cover-description'>
             <h3>Best Detective show</h3>
             <p>Watch Sherlock Final Problem scene</p>
-            <button className="solid-secondary-btn red-solid-btn">
-              Watch Now
-            </button>
+            <Link to={"/video/62430b3be22ce0735254b2a5"} state={{videoDetails:covervideo}}>
+              <button className="solid-secondary-btn red-solid-btn">
+                Watch Now
+              </button>
+            </Link>
           </div>
         </div>
 
