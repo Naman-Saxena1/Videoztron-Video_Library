@@ -39,7 +39,13 @@ function VideoCard({ video })
                 <h3 className="video-card-title">{title}</h3>
                 <h5>{videoViews} views | 9 hours ago</h5>
                 <div className="card-button">
-                    <button className="card-icon-btn add-to-wishlist-btn outline-card-secondary-btn">
+                    <button 
+                        className="card-icon-btn add-to-wishlist-btn outline-card-secondary-btn"
+                        onClick={event=>{
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }}
+                    >    
                         <MdAccessTime style={{fontSize: "20px"}}/>
                     </button>
                 </div>
