@@ -81,14 +81,23 @@ a:hover::after
     }
 }
 
-.videos-container
+.videos-container, .watch-later-video-container, .liked-videos-list-container
 {
     width:100%;
     min-height: 40rem;
     display: grid;
-    justify-content: space-between;
     gap: 4rem;
     grid-template-columns: repeat(auto-fit,29.6rem);
+}
+
+.videos-container
+{
+    justify-content: space-between;
+}
+
+.watch-later-video-container, .liked-videos-list-container
+{
+    justify-content: center;
 }
 
 .red-solid-btn

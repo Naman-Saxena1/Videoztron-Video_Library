@@ -8,6 +8,9 @@ import {
     MdPlaylistPlay,
     MdHistory
 } from "react-icons/md"
+import {
+    AiOutlineLike
+} from "react-icons/ai"
 import { Link, useLocation } from "react-router-dom"
 
 function Sidebar()
@@ -33,6 +36,12 @@ function Sidebar()
                 <div className={urlPath==="/watch-later"?`sidebar-options active-sidebar-option`:`sidebar-options`}>
                     <MdAccessTime className="sidebar-options-icons" style={{fontSize: "20px"}}/>
                     <p className="sidebar-options-text">Watch Later</p>
+                </div>
+            </Link>
+            <Link to="/liked-videos">
+                <div className={urlPath==="/liked-videos"?`sidebar-options active-sidebar-option`:`sidebar-options`}>
+                    <AiOutlineLike className="sidebar-options-icons" style={{fontSize: "20px"}}/>
+                    <p className="sidebar-options-text">Liked Videos</p>
                 </div>
             </Link>
             <Link to="/playlist">

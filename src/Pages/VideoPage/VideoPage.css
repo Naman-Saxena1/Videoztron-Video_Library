@@ -60,15 +60,21 @@
 
 .video-options
 {
+    padding: 1rem;
     font-size: 14px;
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 
+.video-options:hover
+{
+    background-color: var(--grey);
+}
+
 .video-options .options-icon
 {
-    margin: 0 6px;
+    margin: 0 6px 0 0;
     font-size: 25px;
 }
 

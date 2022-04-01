@@ -35,3 +35,42 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+.videocard-options-btn
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    border-radius: 50%;
+    margin: 0.8rem 1.1rem 0 0;
+}
+
+.videocard-options-container
+{
+    position: absolute;
+    top: 5.2rem;
+    right: 1.1rem;
+    width: 23.6rem;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.videocard-options
+{
+    width: 100%;
+    height: 5rem;
+    padding: 1rem;
+    gap: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+}
+
+.videocard-options:hover
+{
+    background-color: var(--grey);
+}

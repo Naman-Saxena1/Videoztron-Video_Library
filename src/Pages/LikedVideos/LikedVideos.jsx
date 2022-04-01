@@ -3,18 +3,18 @@ import { Link } from "react-router-dom"
 import axios from "axios"
 import jwt_decode from "jwt-decode"
 import { useLocation } from "react-router-dom"
-import './WatchLater.css'
+import './LikedVideos.css'
 import {
   Sidebar,
-  useWatchLater,
+  useLikedVideos,
   VideoCard
 } from '../../index'
 import Lottie from "react-lottie"
 import SadboxLottie from "../../Assets/lottie/sad-empty-box.json"
 
-function WatchLater() {
+function LikedVideos() {
 
-  const { watchLaterList, dispatchWatchLaterList } = useWatchLater()
+  const { likedVideosList, dispatchLikedVideosList } = useLikedVideos()
   const { pathname } = useLocation();
 
   let sadboxObj = {
@@ -44,21 +44,20 @@ function WatchLater() {
       else
       {
         (async () => {
-        
           let updatedUserInfo = await axios.get(
-              "https://videoztron.herokuapp.com/api/user",
+            "https://videoztron.herokuapp.com/api/user",
+            {
+              headers:
               {
-                headers:
-                {
                   'x-access-token': localStorage.getItem('token'),
-                }
               }
+            }
           )
 
           if(updatedUserInfo.data.status==="ok")
           {
-            dispatchWatchLaterList({type: "UPDATE_WATCH_LATER_LIST",payload: updatedUserInfo.data.user.watchLater})
-          }  
+            dispatchLikedVideosList({type: "UPDATE_LIKED_VIDEOS_LIST",payload: updatedUserInfo.data.user.likedVideos})
+          }
         })()
       }
     }
@@ -67,13 +66,13 @@ function WatchLater() {
   return (
     <div className='page-container'>
       <Sidebar/>
-      <div className='watch-later-container'>
-        <h2 className='watch-later-heading'>
-          {watchLaterList.length} {watchLaterList.length===1?"video is":"videos are"} in your Watch Later list
+      <div className='liked-videos-container'>
+        <h2 className='liked-videos-heading'>
+          {likedVideosList.length} {likedVideosList.length===1?"video is":"videos are"} in your Liked Videos list
         </h2>
         
           {
-            watchLaterList.length===0
+            likedVideosList.length===0
             ? (
               <Lottie options={sadboxObj}
                 height={450}
@@ -84,9 +83,9 @@ function WatchLater() {
               />
             )
             : (
-                <div className='watch-later-video-container'>
+                <div className='liked-videos-list-container'>
                   {
-                    watchLaterList.map((video,index)=>
+                    likedVideosList.map((video,index)=>
                     <VideoCard key={index} video={video}/>)
                   }
                 </div>
@@ -97,4 +96,4 @@ function WatchLater() {
   )
 }
 
-export { WatchLater };
+export { LikedVideos };

@@ -2,10 +2,18 @@ import React, { useEffect } from 'react'
 import './Navbar.css'
 import { Link } from "react-router-dom"
 import jwt_decode from "jwt-decode";
-import { useUserLogin, useToast } from "../../index"
+import { 
+    useUserLogin, 
+    useToast,
+    useWatchLater,
+    useLikedVideos 
+} from "../../index"
 import { AiOutlineBell } from "react-icons/ai"
 
 function Navbar() {
+
+    const { dispatchWatchLaterList } = useWatchLater()
+    const { dispatchLikedVideosList } = useLikedVideos()
 
     const { setUserLoggedIn } = useUserLogin(false)
     const { showToast } = useToast()
@@ -28,38 +36,19 @@ function Navbar() {
         }
     },[])
 
-    // useEffect(()=>{
-    //     function handleInvalidToken() {
-    //         if(localStorage.getItem('token')!==null)
-    //         {
-    //             setUserLoggedIn(true)
-    //         }
-    //         else
-    //         {
-    //             setUserLoggedIn(false)
-    //             dispatchUserWishlist({type:"UPDATE_USER_WISHLIST",payload:[]})
-    //             dispatchUserCart({type:"UPDATE_USER_CART",payload:[]})
-    //         }
-    //     }
-    //     window.addEventListener("storage",handleInvalidToken)
-
-    //     return function cleanup() {
-    //         window.removeEventListener('storage', handleInvalidToken)
-    //     }
-    // },[userWishlist,userCart])
-
     function logoutUser()
     {
         localStorage.removeItem('token')
         setUserLoggedIn(false)
         localStorage.clear()
+        dispatchLikedVideosList({type: "UPDATE_LIKED_VIDEOS_LIST",payload: []})
+        dispatchWatchLaterList({type: "UPDATE_WATCH_LATER_LIST",payload: []})
         showToast("success","","Logged out successfully")
     }
     
     return (
         <div className="top-bar">
             <div className="left-topbar-container">
-                {/* <button id="top-bar-ham-menu-btn" className="icon-btn"><i className="fa fa-bars" aria-hidden="true"></i></button> */}
                 <Link to="/">
                     <h2 className="top-bar-brand-name">Videoztron</h2>
                 </Link>

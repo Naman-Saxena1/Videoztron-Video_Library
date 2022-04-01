@@ -1,4 +1,4 @@
-.watch-later-container
+.liked-videos-container
 {
     min-height: calc(100vh - 107.23px);
     grid-column: 2/3;
@@ -6,13 +6,13 @@
 }
 
 @media only screen and (max-width:1015px){
-    .watch-later-container
+    .liked-videos-container
     {
         min-height: calc(100vh - 157.23px);
     }
 }
 
-.watch-later-heading
+.liked-videos-heading
 {
     margin-bottom: 6rem;
 }

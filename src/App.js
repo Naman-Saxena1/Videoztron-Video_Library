@@ -10,7 +10,8 @@ import {
   VideoPage,
   WatchLater,
   AllPlaylistPage,
-  History
+  History,
+  LikedVideos
 } from "./index"
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/explore"        element={<VideoListingPage/>} />
           <Route path="/video/:id"      element={<VideoPage/>}/>
           <Route path="/watch-later"    element={<WatchLater/>} />
+          <Route path="/liked-videos"   element={<LikedVideos/>} />
           <Route path="/playlist"       element={<AllPlaylistPage/>} />
           <Route path="/history"        element={<History/>} />
         </Routes>

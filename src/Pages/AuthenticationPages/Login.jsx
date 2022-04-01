@@ -16,38 +16,6 @@ function Login()
     const [userEmail    , setUserEmail]    = useState('')
     const [userPassword , setUserPassword] = useState('')
 
-    useEffect(()=>{
-        const token=localStorage.getItem('token')
-
-        if(token)
-        {
-            const user = jwt_decode(token)
-            if(!user)
-            {
-                localStorage.removeItem('token')
-            }
-            else
-            {
-                (async function getUpdatedWishlistAndCart()
-                {
-                    // let updatedUserInfo = await axios.get(
-                    // "https://videoztron.herokuapp.com/api/user",
-                    // {
-                    //     headers:
-                    //     {
-                    //     'x-access-token': localStorage.getItem('token'),
-                    //     }
-                    // })
-
-                    // if(updatedUserInfo.data.status==="ok")
-                    // {
-                        
-                    // }
-                })()
-            }
-        }   
-    },[])
-
     const navigate = useNavigate()
 
     function loginUser(event)
@@ -67,8 +35,6 @@ function Login()
                 localStorage.setItem('token',res.data.user)
                 showToast("success","","Logged in successfully")
                 setUserLoggedIn(true)
-                // dispatchUserWishlist({type: "UPDATE_USER_WISHLIST",payload: res.data.wishlist})
-                // dispatchUserCart({type: "UPDATE_USER_CART",payload: res.data.cart})
                 navigate('/')
             }
             else
@@ -123,7 +89,12 @@ function Login()
                     </div>
                 </div>
 
-                <button type="submit" className="solid-success-btn form-user-auth-submit-btn">Login</button>
+                <button 
+                    type="submit" 
+                    className="solid-success-btn form-user-auth-submit-btn"
+                >
+                        Login
+                </button>
 
                 <div className="new-user-container">
                     <Link to="/signup" className="links-with-blue-underline" id="new-user-link">
