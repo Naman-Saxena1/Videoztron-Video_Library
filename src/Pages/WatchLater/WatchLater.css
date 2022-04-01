@@ -2,7 +2,16 @@
 {
     min-height: calc(100vh - 107.23px);
     grid-column: 2/3;
-    padding: 2rem 6rem;
+    padding: 2rem 6rem 0 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dark-theme
+{
+    background-color: #0b5c72;
+    color: white;
 }
 
 @media only screen and (max-width:1015px){
@@ -14,6 +23,7 @@
 
 .watch-later-heading
 {
+    z-index: 2;
     margin-bottom: 6rem;
 }
 

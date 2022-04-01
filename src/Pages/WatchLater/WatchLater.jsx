@@ -10,17 +10,18 @@ import {
   VideoCard
 } from '../../index'
 import Lottie from "react-lottie"
-import SadboxLottie from "../../Assets/lottie/sad-empty-box.json"
+import SpaceshipLottie from "../../Assets/lottie/spaceship.json"
 
 function WatchLater() {
 
   const { watchLaterList, dispatchWatchLaterList } = useWatchLater()
   const { pathname } = useLocation();
+  const numberOfVideosInWatchLaterList = watchLaterList.length;
 
-  let sadboxObj = {
+  const sadboxObj = {
       loop: true,
       autoplay: true,
-      animationData : SadboxLottie,
+      animationData : SpaceshipLottie,
       rendererSettings: {
         preserveAspectRatio: 'xMidYMid slice'
       }
@@ -67,18 +68,17 @@ function WatchLater() {
   return (
     <div className='page-container'>
       <Sidebar/>
-      <div className='watch-later-container'>
+      <div className={`watch-later-container ${numberOfVideosInWatchLaterList===0? "dark-theme": "light-theme"}`}>
         <h2 className='watch-later-heading'>
-          {watchLaterList.length} {watchLaterList.length===1?"video is":"videos are"} in your Watch Later list
+          {numberOfVideosInWatchLaterList} {numberOfVideosInWatchLaterList===1?"video is":"videos are"} in your Watch Later list
         </h2>
         
           {
-            watchLaterList.length===0
+            numberOfVideosInWatchLaterList===0
             ? (
               <Lottie options={sadboxObj}
-                height={450}
-                width={450}
-                style={{position:"relative",bottom:"8rem"}}
+                height={570}
+                style={{position:"absolute", margin: "auto", width: "60%"}}
                 isStopped={false}
                 isPaused={false}
               />
@@ -86,8 +86,8 @@ function WatchLater() {
             : (
                 <div className='watch-later-video-container'>
                   {
-                    watchLaterList.map((video,index)=>
-                    <VideoCard key={index} video={video}/>)
+                    watchLaterList.map((video)=>
+                    <VideoCard key={video._id} video={video}/>)
                   }
                 </div>
               )

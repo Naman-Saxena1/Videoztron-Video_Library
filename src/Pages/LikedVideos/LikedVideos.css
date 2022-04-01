@@ -5,6 +5,12 @@
     padding: 2rem 6rem;
 }
 
+.dark-theme
+{
+    background-color: #0b5c72;
+    color: white;
+}
+
 @media only screen and (max-width:1015px){
     .liked-videos-container
     {

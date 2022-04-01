@@ -10,17 +10,18 @@ import {
   VideoCard
 } from '../../index'
 import Lottie from "react-lottie"
-import SadboxLottie from "../../Assets/lottie/sad-empty-box.json"
+import AstronautLottie from "../../Assets/lottie/astronaut.json"
 
 function LikedVideos() {
 
   const { likedVideosList, dispatchLikedVideosList } = useLikedVideos()
   const { pathname } = useLocation();
+  const numberOfVideosLiked = likedVideosList.length;
 
-  let sadboxObj = {
+  const astronautObj = {
       loop: true,
       autoplay: true,
-      animationData : SadboxLottie,
+      animationData : AstronautLottie,
       rendererSettings: {
         preserveAspectRatio: 'xMidYMid slice'
       }
@@ -66,18 +67,18 @@ function LikedVideos() {
   return (
     <div className='page-container'>
       <Sidebar/>
-      <div className='liked-videos-container'>
+      <div className={`liked-videos-container ${numberOfVideosLiked===0? "dark-theme": "light-theme"}`}>
         <h2 className='liked-videos-heading'>
-          {likedVideosList.length} {likedVideosList.length===1?"video is":"videos are"} in your Liked Videos list
+          {numberOfVideosLiked} {numberOfVideosLiked===1?"video is":"videos are"} in your Liked Videos list
         </h2>
         
           {
-            likedVideosList.length===0
+            numberOfVideosLiked===0
             ? (
-              <Lottie options={sadboxObj}
+              <Lottie options={astronautObj}
                 height={450}
                 width={450}
-                style={{position:"relative",bottom:"8rem"}}
+                style={{position:"relative",bottom:"3rem"}}
                 isStopped={false}
                 isPaused={false}
               />
@@ -85,8 +86,8 @@ function LikedVideos() {
             : (
                 <div className='liked-videos-list-container'>
                   {
-                    likedVideosList.map((video,index)=>
-                    <VideoCard key={index} video={video}/>)
+                    likedVideosList.map((video)=>
+                    <VideoCard key={video._id} video={video}/>)
                   }
                 </div>
               )
