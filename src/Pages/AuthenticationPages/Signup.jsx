@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import "./UserAuth.css"
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
-import { useToast } from "../../Context/toast-context"
+import { useToast } from "../../index"
 
 function Signup()
 {

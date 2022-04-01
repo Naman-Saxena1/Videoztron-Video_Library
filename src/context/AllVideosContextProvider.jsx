@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const AllVideosContext = createContext()
 
-let AllVideosProvider = ({children}) => 
+let AllVideosContextProvider = ({children}) => 
 {
     const [ allVideosList, setAllVideosList ] = useState([])
     const [ toggleTab, setToggleTab] = useState("all")
@@ -48,4 +48,4 @@ let AllVideosProvider = ({children}) =>
 
 let useAllVideos = () => useContext(AllVideosContext)
 
-export { AllVideosProvider, useAllVideos }
+export { AllVideosContextProvider, useAllVideos }

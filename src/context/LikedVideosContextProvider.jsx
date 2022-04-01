@@ -2,12 +2,12 @@ import { useReducer, createContext, useContext } from "react"
 
 const LikedVideosContext = createContext()
 
-const updateLikedVideosFunc = (state,action) => {
-    switch(action.type)
+const updateLikedVideosFunc = (state,{type,payload}) => {
+    switch(type)
     {
         case "UPDATE_LIKED_VIDEOS_LIST" : 
             {
-                return [...action.payload]
+                return [...payload]
             }
         default :
             {

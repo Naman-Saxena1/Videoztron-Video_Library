@@ -2,7 +2,7 @@ import './VideoCard.css'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import jwt_decode from "jwt-decode"
-import sherlock from "../../Assets/images/sherlock1.webp"
+import sherlock from "../../assets/images/sherlock1.webp"
 import {
     AiOutlineMore
 } from "react-icons/ai"

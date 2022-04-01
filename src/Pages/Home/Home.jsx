@@ -9,7 +9,7 @@ import {
   Footer,
   useTrendingVideos
 } from '../../index'
-import sherlock from '../../Assets/images/sherlock4.jpg'
+import sherlock from '../../assets/images/sherlock4.jpg'
 
 function Home() {
   const { trendingVideosList } = useTrendingVideos()

@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from 'react'
 import './Toast.css'
-import { useToast } from "../../Context/toast-context"
+import { useToast } from "../../index"
 
 function Toast({ position })
 {
