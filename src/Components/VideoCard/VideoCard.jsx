@@ -166,7 +166,7 @@ function VideoCard({ video, itemInUserHistory })
     const removeVideoFromHistory = async () => {
         
         const updatedUserInfo = await axios.delete(
-            `http://localhost:1337/api/history/${video._id}`,
+            `https://videoztron.herokuapp.com/api/history/${video._id}`,
             {
                 headers : {'x-access-token': localStorage.getItem('token')} 
             }

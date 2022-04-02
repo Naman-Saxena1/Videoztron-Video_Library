@@ -128,7 +128,7 @@ function VideoPage() {
                 if(user)
                 {
                     const updatedUserInfo = await axios.patch(
-                        "http://localhost:1337/api/history",
+                        "https://videoztron.herokuapp.com/api/history",
                         {
                             video
                         },

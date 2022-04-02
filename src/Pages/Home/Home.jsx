@@ -20,39 +20,6 @@ function Home() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  useEffect(()=>{
-      const token=localStorage.getItem('token')
-
-      if(token)
-      {
-          const user = jwt_decode(token)
-          if(!user)
-          {
-              localStorage.removeItem('token')
-          }
-          else
-          {
-              // (async function getUpdatedUserData()
-              // {
-              //     let updatedUserInfo = await axios.get(
-              //     "http://localhost:1337/api/user",
-              //     {
-              //         headers:
-              //         {
-              //         'x-access-token': localStorage.getItem('token'),
-              //         }
-              //     })
-
-              //     if(updatedUserInfo.data.status==="ok")
-              //     {
-              //         dispatchUserWishlist({type: "UPDATE_USER_WISHLIST",payload: updatedUserInfo.data.user.wishlist})
-              //         dispatchUserCart({type: "UPDATE_USER_CART",payload: updatedUserInfo.data.user.cart})
-              //     }
-              // })()
-          }
-      }   
-  },[])
-
   let covervideo = {
     "_id": "62430b3be22ce0735254b2a5",
     "videoSrcUrl": "https://www.youtube.com/watch?v=5z32qzSqtXY",

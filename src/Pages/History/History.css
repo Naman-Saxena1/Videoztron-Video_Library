@@ -26,3 +26,13 @@
     z-index: 2;
     margin-bottom: 6rem;
 }
+
+.history-page-container.light-theme  .history-page-heading
+{
+    margin-bottom: 4rem;
+}
+
+.clear-history-btn
+{
+    margin-bottom: 4rem;
+}
