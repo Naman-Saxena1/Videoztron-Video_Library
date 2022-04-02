@@ -56,6 +56,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    border: 1px solid var(--offline-grey-color);
 }
 
 .videocard-options

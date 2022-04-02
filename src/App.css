@@ -81,7 +81,7 @@ a:hover::after
     }
 }
 
-.videos-container, .watch-later-video-container, .liked-videos-list-container
+.videos-container, .watch-later-video-container, .liked-videos-list-container, .history-videos-container
 {
     width:100%;
     min-height: 40rem;
@@ -95,7 +95,7 @@ a:hover::after
     justify-content: space-between;
 }
 
-.watch-later-video-container, .liked-videos-list-container
+.watch-later-video-container, .liked-videos-list-container, .history-videos-container
 {
     justify-content: center;
 }

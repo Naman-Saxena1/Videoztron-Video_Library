@@ -10,6 +10,7 @@ import { AllVideosProvider } from './Context/all-videos-context'
 import { WatchLaterContextProvider } from './Context/watch-later-context'
 import { LikedVideosContextProvider } from './Context/liked-videos-context'
 import { DislikedVideosContextProvider } from './Context/disliked-videos-context'
+import { HistoryContextProvider } from './Context/history-videos-context';
 
 export { useToast } from './Context/toast-context';
 export { useUserLogin } from './Context/user-login-context'
@@ -18,6 +19,7 @@ export { useAllVideos } from './Context/all-videos-context'
 export { useWatchLater } from './Context/watch-later-context'
 export { useLikedVideos } from './Context/liked-videos-context'
 export { useDislikedVideos } from './Context/disliked-videos-context'
+export { useHistory } from './Context/history-videos-context'
 
 export { Navbar } from "./Components/Navbar/Navbar"
 export { Toast } from './Components/Toast/Toast'
@@ -46,7 +48,9 @@ ReactDOM.render(
             <WatchLaterContextProvider>
               <LikedVideosContextProvider>
                 <DislikedVideosContextProvider>
-                  <App/>
+                  <HistoryContextProvider>
+                    <App/>
+                  </HistoryContextProvider>
                 </DislikedVideosContextProvider>
               </LikedVideosContextProvider>
             </WatchLaterContextProvider>

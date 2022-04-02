@@ -8,20 +8,23 @@ import {
 } from "react-icons/ai"
 import {
     MdAccessTime,
-    MdPlaylistAdd
+    MdPlaylistAdd,
+    MdHistory
 } from "react-icons/md"
 import {
     useWatchLater,
-    useToast
+    useToast, 
+    useHistory
 } from '../../index'
 import axios from 'axios'
 
-function VideoCard({ video })
+function VideoCard({ video, itemInUserHistory })
 {
     const { watchLaterList, dispatchWatchLaterList } = useWatchLater()
     const { showToast } = useToast()
     const [ showVideoOptions, setShowVideoOptions ] = useState(false)
     const [ isVideoPresentInWatchLater, setIsVideoPresentInWatchLater ] = useState(false)
+    const { userHistoryList, setUserHistoryList } = useHistory()
 
     const navigate = useNavigate()
 
@@ -160,6 +163,21 @@ function VideoCard({ video })
         }
     }
 
+    const removeVideoFromHistory = async () => {
+        
+        const updatedUserInfo = await axios.delete(
+            `http://localhost:1337/api/history/${video._id}`,
+            {
+                headers : {'x-access-token': localStorage.getItem('token')} 
+            }
+        )
+
+        if(updatedUserInfo.data.status==="ok")
+        {
+            setUserHistoryList(updatedUserInfo.data.user.history)
+        }
+    }
+
     return (
         <Link to={`/video/${_id}`} state={{videoDetails:video}}>
             <div className='video-card'>
@@ -219,6 +237,21 @@ function VideoCard({ video })
                                 <MdPlaylistAdd style={{fontSize: "20px"}}/>
                                 <h5>Add to your playlist</h5>
                             </div>
+                            {
+                                itemInUserHistory && 
+                                (
+                                    <div className='videocard-options'
+                                        onClick={(event)=>{
+                                            event.preventDefault()
+                                            event.stopPropagation()
+                                            removeVideoFromHistory()
+                                        }}
+                                    >
+                                        <MdHistory style={{fontSize: "20px"}}/>
+                                        <h5>Remove from history</h5>
+                                    </div>
+                                )
+                            }
                         </div>
                     )
                 }            

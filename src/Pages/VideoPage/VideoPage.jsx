@@ -21,7 +21,8 @@ import {
     useLikedVideos,
     useDislikedVideos,
     useWatchLater,
-    useToast
+    useToast,
+    useHistory
 } from '../../index'
 
 function VideoPage() {
@@ -32,6 +33,7 @@ function VideoPage() {
     const { showToast } = useToast()
     const [ videoLikedStatus, setVideoLikedStatus ] = useState("neutral")
     const [ isVideoPresentInWatchLater, setIsVideoPresentInWatchLater ] = useState(false)
+    const { userHistoryList, setUserHistoryList } = useHistory()
 
     const { trendingVideosList } = useTrendingVideos()
 
@@ -115,6 +117,34 @@ function VideoPage() {
                 setVideoLikedStatus("neutral")
             }
         }
+
+        (async () => {
+            const token=localStorage.getItem('token')
+
+            if(token)
+            {    
+                const user = jwt_decode(token)
+                    
+                if(user)
+                {
+                    const updatedUserInfo = await axios.patch(
+                        "http://localhost:1337/api/history",
+                        {
+                            video
+                        },
+                        {
+                            headers : {'x-access-token': localStorage.getItem('token')} 
+                        }
+                    )
+
+                    if(updatedUserInfo.data.status==="ok")
+                    {
+                        setUserHistoryList(updatedUserInfo.data.user.history)
+                    }
+                }
+            }
+        })()
+
     },[likedVideosList, video._id, watchLaterList])
 
     useEffect(() => {
