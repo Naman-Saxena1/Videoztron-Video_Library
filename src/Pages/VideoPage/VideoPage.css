@@ -105,3 +105,32 @@
     background-color: white;
     cursor: pointer;
 }
+
+@media ONLY screen and (max-width:960px)
+{
+    .video-page-container
+    {
+        flex-direction: column;
+    }
+
+    .video-content-container
+    {
+        width: 100%;
+    }
+
+    .video-recommendation-container
+    {
+        width: 100%;
+        padding: 1rem 4rem;
+    }
+
+    .video-recommendation-container a, .recommendation-item, .recommendation-item-details h4
+    {
+        width: 100%;
+    }
+
+    .recommendation-item-details
+    {
+        width: 70%;
+    }
+}

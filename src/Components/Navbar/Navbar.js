@@ -6,7 +6,9 @@ import {
     useUserLogin, 
     useToast,
     useWatchLater,
-    useLikedVideos 
+    useLikedVideos,
+    usePlaylist,
+    useHistory 
 } from "../../index"
 import { AiOutlineBell } from "react-icons/ai"
 
@@ -14,6 +16,8 @@ function Navbar() {
 
     const { dispatchWatchLaterList } = useWatchLater()
     const { dispatchLikedVideosList } = useLikedVideos()
+    const { allPlaylists, setAllPlaylists } = usePlaylist()
+    const { setUserHistoryList } = useHistory()
 
     const { setUserLoggedIn } = useUserLogin(false)
     const { showToast } = useToast()
@@ -43,6 +47,8 @@ function Navbar() {
         localStorage.clear()
         dispatchLikedVideosList({type: "UPDATE_LIKED_VIDEOS_LIST",payload: []})
         dispatchWatchLaterList({type: "UPDATE_WATCH_LATER_LIST",payload: []})
+        setAllPlaylists([])
+        setUserHistoryList([])
         showToast("success","","Logged out successfully")
     }
     

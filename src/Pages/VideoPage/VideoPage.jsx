@@ -16,8 +16,9 @@ import {
 import YouTube from "react-youtube";
 import './VideoPage.css'
 import {
-    useTrendingVideos,
     RecommendationCard,
+    AddToPlaylistModal,
+    useTrendingVideos,
     useLikedVideos,
     useDislikedVideos,
     useWatchLater,
@@ -31,9 +32,11 @@ function VideoPage() {
     const { likedVideosList, dispatchLikedVideosList } = useLikedVideos()
     const { watchLaterList, dispatchWatchLaterList } = useWatchLater()
     const { showToast } = useToast()
+    const { userHistoryList, setUserHistoryList } = useHistory()
+
     const [ videoLikedStatus, setVideoLikedStatus ] = useState("neutral")
     const [ isVideoPresentInWatchLater, setIsVideoPresentInWatchLater ] = useState(false)
-    const { userHistoryList, setUserHistoryList } = useHistory()
+    const [ showPlaylistModal, setShowPlaylistModal ] = useState(false)
 
     const { trendingVideosList } = useTrendingVideos()
 
@@ -511,7 +514,12 @@ function VideoPage() {
                                 </div>
                             )
                         }
-                        <div className='video-options'>
+                        <div 
+                            className='video-options'
+                            onClick={()=>{
+                                setShowPlaylistModal(prevState=> !prevState)
+                            }}
+                        >
                             <MdPlaylistAdd className='options-icon'/>
                             <span>Add to playlist</span>
                         </div>
@@ -532,6 +540,11 @@ function VideoPage() {
                     )
                 }
             </div>
+            <AddToPlaylistModal 
+                video={video}
+                showPlaylistModal={showPlaylistModal} 
+                setShowPlaylistModal={setShowPlaylistModal}
+            />
         </div>
     )
 }
