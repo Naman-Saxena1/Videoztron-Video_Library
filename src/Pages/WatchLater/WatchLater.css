@@ -10,7 +10,7 @@
 
 .dark-theme
 {
-    background-color: #0b5c72;
+    background-color: var(--sky-blue-2);
     color: white;
 }
 
@@ -25,10 +25,4 @@
 {
     z-index: 2;
     margin-bottom: 6rem;
-}
-
-.sadbox-lottie
-{
-    position: relative;
-    bottom: 8rem;
 }

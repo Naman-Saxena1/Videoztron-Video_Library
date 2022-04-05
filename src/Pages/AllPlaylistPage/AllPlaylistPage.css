@@ -1,12 +1,33 @@
-.playlist-page-container
+.playlist-container
 {
     min-height: calc(100vh - 107.23px);
     grid-column: 2/3;
+    padding: 2rem 6rem 0 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dark-theme
+{
+    background-color: var(--sky-blue-2);
+    color: white;
 }
 
 @media only screen and (max-width:1015px){
-    .playlist-page-container
+    .playlist-container
     {
         min-height: calc(100vh - 157.23px);
     }
+}
+
+.playlist-heading
+{
+    z-index: 2;
+    margin-bottom: 1rem;
+}
+
+.delete-all-playlists-btn
+{
+    margin: 3rem;
 }

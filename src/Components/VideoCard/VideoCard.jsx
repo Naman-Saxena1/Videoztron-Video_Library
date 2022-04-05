@@ -7,23 +7,34 @@ import {
     AiOutlineMore
 } from "react-icons/ai"
 import {
+    BiTrashAlt
+} from "react-icons/bi"
+import {
     MdAccessTime,
-    MdPlaylistAdd
+    MdPlaylistAdd,
+    MdHistory
 } from "react-icons/md"
 import {
+    AddToPlaylistModal,
     useWatchLater,
-    useToast
+    useToast, 
+    useHistory,
+    usePlaylist
 } from '../../index'
 import axios from 'axios'
 
-function VideoCard({ video })
+function VideoCard({ video, itemInUserHistory, isPlayListCard, playlistId })
 {
+    const navigate = useNavigate()
+
     const { watchLaterList, dispatchWatchLaterList } = useWatchLater()
     const { showToast } = useToast()
+    const { userHistoryList, setUserHistoryList } = useHistory()
+    const { allPlaylists, setAllPlaylists } = usePlaylist()
+
     const [ showVideoOptions, setShowVideoOptions ] = useState(false)
     const [ isVideoPresentInWatchLater, setIsVideoPresentInWatchLater ] = useState(false)
-
-    const navigate = useNavigate()
+    const [ showPlaylistModal, setShowPlaylistModal ] = useState(false)
 
     const {
         _id,
@@ -160,6 +171,62 @@ function VideoCard({ video })
         }
     }
 
+    const removeVideoFromHistory = async () => {
+        
+        const updatedUserInfo = await axios.delete(
+            `https://videoztron.herokuapp.com/api/history/${video._id}`,
+            {
+                headers : {'x-access-token': localStorage.getItem('token')} 
+            }
+        )
+
+        if(updatedUserInfo.data.status==="ok")
+        {
+            setUserHistoryList(updatedUserInfo.data.user.history)
+        }
+    }
+
+    const addToUserPlaylist = async () => {
+        const token=localStorage.getItem('token')
+
+        if(token)
+        {
+            const user = jwt_decode(token)
+                
+            if(!user)
+            {
+                localStorage.removeItem('token')
+                showToast("warning","","Kindly Login")
+                navigate('/login')
+            }
+            else
+            {
+                setShowPlaylistModal(true)
+            }
+        }
+        else
+        {
+            showToast("warning","","Kindly Login")
+        }
+    }
+
+    const removeVideoFromPlaylist = async () => {
+        
+        const updatedUserInfo = await axios.delete(
+            `https://videoztron.herokuapp.com/api/playlist/delete/specificvideo`,
+            {
+                headers: {'x-access-token':localStorage.getItem("token")},
+                data: {playlistId: playlistId, videoId : _id}
+            }
+        )
+
+        if(updatedUserInfo.data.status==="ok")
+        {
+            setAllPlaylists(updatedUserInfo.data.user.allPlaylists)
+            showToast("success","","Video removed from playlist!")
+        }
+    } 
+
     return (
         <Link to={`/video/${_id}`} state={{videoDetails:video}}>
             <div className='video-card'>
@@ -167,16 +234,32 @@ function VideoCard({ video })
                 <h3 className="video-card-title">{title}</h3>
                 <h5>{videoViews} views | 9 hours ago</h5>
                 <div className="card-button">
-                    <button 
-                        className="videocard-options-btn outline-card-secondary-btn"
-                        onClick={event=>{
-                            event.preventDefault()
-                            event.stopPropagation()
-                            setShowVideoOptions(prevState=> !prevState)
-                        }}
-                    >    
-                        <AiOutlineMore style={{fontSize: "20px"}}/>
-                    </button>
+                    {
+                        isPlayListCard===true 
+                        ? (
+                            <button 
+                                className="videocard-options-btn outline-card-secondary-btn"
+                                onClick={event=>{
+                                    event.preventDefault()
+                                    event.stopPropagation()
+                                    removeVideoFromPlaylist()
+                                }}
+                            >    
+                                <BiTrashAlt style={{fontSize: "20px"}}/>
+                            </button>
+                        ) : (
+                            <button 
+                                className="videocard-options-btn outline-card-secondary-btn"
+                                onClick={event=>{
+                                    event.preventDefault()
+                                    event.stopPropagation()
+                                    setShowVideoOptions(prevState=> !prevState)
+                                }}
+                            >    
+                                <AiOutlineMore style={{fontSize: "20px"}}/>
+                            </button>
+                        )
+                    }
                 </div>
                 {
                     showVideoOptions && (
@@ -190,6 +273,7 @@ function VideoCard({ video })
                                             event.preventDefault()
                                             event.stopPropagation()
                                             removeItemFromWatchLaterList()
+                                            setShowVideoOptions(false)
                                         }}
                                     >
                                         <MdAccessTime style={{fontSize: "20px"}}/>
@@ -202,6 +286,7 @@ function VideoCard({ video })
                                             event.preventDefault()
                                             event.stopPropagation()
                                             addItemToWatchLaterList()
+                                            setShowVideoOptions(false)
                                         }}
                                     >
                                         <MdAccessTime style={{fontSize: "20px"}}/>
@@ -214,14 +299,41 @@ function VideoCard({ video })
                                 onClick={(event)=>{
                                     event.preventDefault()
                                     event.stopPropagation()
+                                    addToUserPlaylist()
+                                    setShowVideoOptions(false)
                                 }}
                             >
                                 <MdPlaylistAdd style={{fontSize: "20px"}}/>
                                 <h5>Add to your playlist</h5>
                             </div>
+                            {
+                                itemInUserHistory && 
+                                (
+                                    <div className='videocard-options'
+                                        onClick={(event)=>{
+                                            event.preventDefault()
+                                            event.stopPropagation()
+                                            removeVideoFromHistory()
+                                            setShowVideoOptions(false)
+                                        }}
+                                    >
+                                        <MdHistory style={{fontSize: "20px"}}/>
+                                        <h5>Remove from history</h5>
+                                    </div>
+                                )
+                            }
                         </div>
                     )
-                }            
+                }
+                <AddToPlaylistModal 
+                    showPlaylistModal={showPlaylistModal} 
+                    setShowPlaylistModal={setShowPlaylistModal}
+                    video={video}
+                    onClick={(event)=>{
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }}
+                />            
             </div>
         </Link>
     )

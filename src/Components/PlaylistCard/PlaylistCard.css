@@ -1,0 +1,34 @@
+.playlist-card
+{
+    height: fit-content;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--grey);
+    cursor: pointer;
+}
+
+.playlist-details
+{
+    padding: 1rem;
+}
+
+.trash-button
+{
+    background-color: var(--red-color);
+}
+
+.trash-button:hover
+{
+    background: rgb(200, 52, 64)
+                radial-gradient(circle, transparent 1%, 
+                var(--pink-color) 1%) center/15000%;
+}
+
+.trash-button:active 
+{
+    background-color: var(--pink-color);
+    background-size: 100%;
+    transition: background 0s;
+}
