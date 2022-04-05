@@ -2,6 +2,7 @@ import React,{ useEffect } from 'react'
 import axios from "axios"
 import jwt_decode from "jwt-decode"
 import { Link, useLocation } from "react-router-dom"
+import Lottie from "react-lottie"
 import './Home.css'
 import {
   Sidebar, 
@@ -10,9 +11,19 @@ import {
   useTrendingVideos
 } from '../../index'
 import sherlock from '../../Assets/images/sherlock4.jpg'
+import LoadingLottie from "../../Assets/lottie/loading-0.json"
 
 function Home() {
   const { trendingVideosList } = useTrendingVideos()
+
+  const loadingObj = {
+    loop: true,
+    autoplay: true,
+    animationData : LoadingLottie,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  }
 
   const { pathname } = useLocation();
 
@@ -54,14 +65,26 @@ function Home() {
         </div>
 
         <h2 className='homepage-trending-heading'>Trending Videos</h2>
-        <div className='videos-container'>
-          {
-            trendingVideosList.map((video,index)=>
-                <VideoCard key={index} video={video}/>
-            )
-          }
-        </div>
-
+        {
+          trendingVideosList.length===0 
+          ? (
+            <Lottie options={loadingObj}
+              height={380}
+              style={{ margin: "auto"}}
+              isStopped={false}
+              isPaused={false}
+            />
+          ) : (
+            <div className='videos-container'>
+              {
+                trendingVideosList.map((video,index)=>{
+                    return <VideoCard key={index} video={video}/>
+                  }
+                )
+              }
+            </div>
+          )
+        }
         <Link to="/explore">
           <button className="solid-secondary-btn red-solid-btn explore-btn">
                 Explore all
