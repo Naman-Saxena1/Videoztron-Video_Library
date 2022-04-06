@@ -16,12 +16,14 @@ import {
 import YouTube from "react-youtube";
 import './VideoPage.css'
 import {
-    useTrendingVideos,
     RecommendationCard,
+    AddToPlaylistModal,
+    useTrendingVideos,
     useLikedVideos,
     useDislikedVideos,
     useWatchLater,
-    useToast
+    useToast,
+    useHistory
 } from '../../index'
 
 function VideoPage() {
@@ -30,8 +32,11 @@ function VideoPage() {
     const { likedVideosList, dispatchLikedVideosList } = useLikedVideos()
     const { watchLaterList, dispatchWatchLaterList } = useWatchLater()
     const { showToast } = useToast()
+    const { userHistoryList, setUserHistoryList } = useHistory()
+
     const [ videoLikedStatus, setVideoLikedStatus ] = useState("neutral")
     const [ isVideoPresentInWatchLater, setIsVideoPresentInWatchLater ] = useState(false)
+    const [ showPlaylistModal, setShowPlaylistModal ] = useState(false)
 
     const { trendingVideosList } = useTrendingVideos()
 
@@ -115,6 +120,34 @@ function VideoPage() {
                 setVideoLikedStatus("neutral")
             }
         }
+
+        (async () => {
+            const token=localStorage.getItem('token')
+
+            if(token)
+            {    
+                const user = jwt_decode(token)
+                    
+                if(user)
+                {
+                    const updatedUserInfo = await axios.patch(
+                        "https://videoztron.herokuapp.com/api/history",
+                        {
+                            video
+                        },
+                        {
+                            headers : {'x-access-token': localStorage.getItem('token')} 
+                        }
+                    )
+
+                    if(updatedUserInfo.data.status==="ok")
+                    {
+                        setUserHistoryList(updatedUserInfo.data.user.history)
+                    }
+                }
+            }
+        })()
+
     },[likedVideosList, video._id, watchLaterList])
 
     useEffect(() => {
@@ -481,7 +514,12 @@ function VideoPage() {
                                 </div>
                             )
                         }
-                        <div className='video-options'>
+                        <div 
+                            className='video-options'
+                            onClick={()=>{
+                                setShowPlaylistModal(prevState=> !prevState)
+                            }}
+                        >
                             <MdPlaylistAdd className='options-icon'/>
                             <span>Add to playlist</span>
                         </div>
@@ -502,6 +540,11 @@ function VideoPage() {
                     )
                 }
             </div>
+            <AddToPlaylistModal 
+                video={video}
+                showPlaylistModal={showPlaylistModal} 
+                setShowPlaylistModal={setShowPlaylistModal}
+            />
         </div>
     )
 }

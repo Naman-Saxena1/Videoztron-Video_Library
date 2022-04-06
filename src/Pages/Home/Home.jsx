@@ -2,6 +2,7 @@ import React,{ useEffect } from 'react'
 import axios from "axios"
 import jwt_decode from "jwt-decode"
 import { Link, useLocation } from "react-router-dom"
+import Lottie from "react-lottie"
 import './Home.css'
 import {
   Sidebar, 
@@ -10,48 +11,25 @@ import {
   useTrendingVideos
 } from '../../index'
 import sherlock from '../../Assets/images/sherlock4.jpg'
+import LoadingLottie from "../../Assets/lottie/loading-0.json"
 
 function Home() {
   const { trendingVideosList } = useTrendingVideos()
+
+  const loadingObj = {
+    loop: true,
+    autoplay: true,
+    animationData : LoadingLottie,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  }
 
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-
-  useEffect(()=>{
-      const token=localStorage.getItem('token')
-
-      if(token)
-      {
-          const user = jwt_decode(token)
-          if(!user)
-          {
-              localStorage.removeItem('token')
-          }
-          else
-          {
-              // (async function getUpdatedUserData()
-              // {
-              //     let updatedUserInfo = await axios.get(
-              //     "http://localhost:1337/api/user",
-              //     {
-              //         headers:
-              //         {
-              //         'x-access-token': localStorage.getItem('token'),
-              //         }
-              //     })
-
-              //     if(updatedUserInfo.data.status==="ok")
-              //     {
-              //         dispatchUserWishlist({type: "UPDATE_USER_WISHLIST",payload: updatedUserInfo.data.user.wishlist})
-              //         dispatchUserCart({type: "UPDATE_USER_CART",payload: updatedUserInfo.data.user.cart})
-              //     }
-              // })()
-          }
-      }   
-  },[])
 
   let covervideo = {
     "_id": "62430b3be22ce0735254b2a5",
@@ -87,14 +65,26 @@ function Home() {
         </div>
 
         <h2 className='homepage-trending-heading'>Trending Videos</h2>
-        <div className='videos-container'>
-          {
-            trendingVideosList.map((video,index)=>
-                <VideoCard key={index} video={video}/>
-            )
-          }
-        </div>
-
+        {
+          trendingVideosList.length===0 
+          ? (
+            <Lottie options={loadingObj}
+              height={380}
+              style={{ margin: "auto"}}
+              isStopped={false}
+              isPaused={false}
+            />
+          ) : (
+            <div className='videos-container'>
+              {
+                trendingVideosList.map((video,index)=>{
+                    return <VideoCard key={index} video={video}/>
+                  }
+                )
+              }
+            </div>
+          )
+        }
         <Link to="/explore">
           <button className="solid-secondary-btn red-solid-btn explore-btn">
                 Explore all

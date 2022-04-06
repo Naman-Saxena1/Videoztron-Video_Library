@@ -18,7 +18,7 @@ function WatchLater() {
   const { pathname } = useLocation();
   const numberOfVideosInWatchLaterList = watchLaterList.length;
 
-  const sadboxObj = {
+  const spacshipObj = {
       loop: true,
       autoplay: true,
       animationData : SpaceshipLottie,
@@ -76,7 +76,7 @@ function WatchLater() {
           {
             numberOfVideosInWatchLaterList===0
             ? (
-              <Lottie options={sadboxObj}
+              <Lottie options={spacshipObj}
                 height={570}
                 style={{position:"absolute", margin: "auto", width: "60%"}}
                 isStopped={false}
