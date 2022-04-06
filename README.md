@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# This is Full Stack E-Commerce Project using MERN stack
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live Link - [Videoztron](https://videoztron-dev-branch.netlify.app/)
 
 ## Available Scripts
 
@@ -14,57 +14,68 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+## Technologies used 
+1. HTML
+2. CSS
+3. JavaScript
+4. React
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node JS, Express JS and MongoDb is used for Backend server which is deployed on Heroku.
 
-### `npm run build`
+## Features:
+1. User Authentication (Signup, Login and Logout)
+2. Home Page
+3. Video Listing Page
+4. Playlist management
+5. Like/Dislike Feature
+6. Add to watch later
+7. Watched History
+8. Single Video Page
+9. Filter videos with categories
+10. Custom Toast Component with 4 types - Success, Error, Warning and Information
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## You are welcome to contribute to this project 
+1. Create a personal fork of the project on Github.
+2. Clone the fork on your local machine. Your remote repo on Github is called origin.
+3. Add the original repository as a remote called upstream.
+4. If you created your fork a while ago be sure to pull upstream changes into your local repository.
+5. Create a new branch to work on! Branch from development branch.
+6. Implement/fix your feature, comment your code.
+7. Squash your commits into a single commit with git's interactive rebase. Create a new branch if necessary.
+8. Push your branch to your fork on Github, the remote origin.
+9. From your fork open a pull request in the correct branch. Target the project's development branch.
+10. Once the pull request is approved and merged you can pull the changes from upstream to your local repo and delete your extra branch(es).
+11. And last but not least: Always write your commit messages in the present tense. Your commit message should describe what the commit, when applied, does to the code – not what you did to the code.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## You can report issues on this project using Github issue 
+1. You can read more about this from [Github Docs](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Screenshots
 
-### `npm run eject`
+### Home Page
+![](https://github.com/Naman-Saxena1/Videoztron-Video_Library/blob/development/src/Assets/Screenshots/Videoztron-HomePage-1.PNG)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Video Listing Page
+![](https://github.com/Naman-Saxena1/Videoztron-Video_Library/blob/development/src/Assets/Screenshots/Videoztron-VideoListingPage-1.PNG)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### User Authentication Pages
+![](https://github.com/Naman-Saxena1/Videoztron-Video_Library/blob/development/src/Assets/Screenshots/Videoztron-SignupPage-1.PNG)
+![](https://github.com/Naman-Saxena1/Videoztron-Video_Library/blob/development/src/Assets/Screenshots/Videoztron-LoginPage-1.PNG)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Single Video Page
+![](https://github.com/Naman-Saxena1/Videoztron-Video_Library/blob/development/src/Assets/Screenshots/Videoztron-IndividualVideoPage-1.PNG)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Watch Later Page
+![](https://github.com/Naman-Saxena1/Videoztron-Video_Library/blob/development/src/Assets/Screenshots/Videoztron-WatchLaterPage-1.PNG)
 
-## Learn More
+### Liked Videos Page
+![](https://github.com/Naman-Saxena1/Videoztron-Video_Library/blob/development/src/Assets/Screenshots/Videoztron-LikedVideosPage-1.PNG)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### All Playlists Page
+![](https://github.com/Naman-Saxena1/Videoztron-Video_Library/blob/development/src/Assets/Screenshots/Videoztron-AllPlaylistsPage-1.PNG)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Individual Playlist Page
+![](https://github.com/Naman-Saxena1/Videoztron-Video_Library/blob/development/src/Assets/Screenshots/Videoztron-IndividualPlaylistPage-1.PNG)
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### User History Page
+![](https://github.com/Naman-Saxena1/Videoztron-Video_Library/blob/development/src/Assets/Screenshots/Videoztron-UserHistoryPage-1.PNG)
