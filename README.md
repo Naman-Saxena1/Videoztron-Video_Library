@@ -1,4 +1,4 @@
-# This is Full Stack E-Commerce Project using MERN stack
+# This is Full Stack Video Library Project using MERN stack
 
 Live Link - [Videoztron](https://videoztron-dev-branch.netlify.app/)
 
