@@ -32,7 +32,8 @@ You may also see any lint errors in the console.
 7. Watched History
 8. Single Video Page
 9. Filter videos with categories
-10. Custom Toast Component with 4 types - Success, Error, Warning and Information
+10. Lottie Loading Loader for Home Page while data is fetching
+11. Custom Toast Component with 4 types - Success, Error, Warning and Information
 
 ## You are welcome to contribute to this project 
 1. Create a personal fork of the project on Github.
