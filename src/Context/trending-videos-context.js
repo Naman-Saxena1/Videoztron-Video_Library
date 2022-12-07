@@ -10,7 +10,7 @@ let TrendingVideosProvider = ({children}) =>
     useEffect(() => {
         try {
           (async () => {
-              const trendingVideosData = await axios.get('https://videoztron.herokuapp.com/api/home/trendingvideos')
+              const trendingVideosData = await axios.get('https://videoztron-server.vercel.app/api/home/trendingvideos')
               setTrendingVideosList([...trendingVideosData.data.trendingvideos])
           }) ()
         }

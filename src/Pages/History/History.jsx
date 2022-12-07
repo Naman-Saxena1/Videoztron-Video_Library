@@ -35,7 +35,7 @@ function History() {
   const clearAllHistory = () => {
     (async () => {
       const updatedUserInfo = await axios.delete(
-        "https://videoztron.herokuapp.com/api/history/deleteall",
+        "https://videoztron-server.vercel.app/api/history/deleteall",
         {
           headers: {
             'x-access-token': localStorage.getItem('token')
@@ -67,7 +67,7 @@ function History() {
         (async () => {
         
           let updatedUserInfo = await axios.get(
-              "https://videoztron.herokuapp.com/api/user",
+              "https://videoztron-server.vercel.app/api/user",
               {
                 headers:
                 {

@@ -131,7 +131,7 @@ function VideoPage() {
                 if(user)
                 {
                     const updatedUserInfo = await axios.patch(
-                        "https://videoztron.herokuapp.com/api/history",
+                        "https://videoztron-server.vercel.app/api/history",
                         {
                             video
                         },
@@ -173,7 +173,7 @@ function VideoPage() {
                 {
                     // Item already present in liked videos list, remove like
                     let updatedUserInfo = await axios.delete(
-                        `https://videoztron.herokuapp.com/api/likedvideos/${video._id}`,
+                        `https://videoztron-server.vercel.app/api/likedvideos/${video._id}`,
                         {
                             headers:
                             {
@@ -197,7 +197,7 @@ function VideoPage() {
                     // Item not present in liked videos
                     // Update in backend and then in frontend
                     let updatedUserInfo = await axios.patch(
-                        "https://videoztron.herokuapp.com/api/likedvideos",
+                        "https://videoztron-server.vercel.app/api/likedvideos",
                         {
                             video
                         },
@@ -217,7 +217,7 @@ function VideoPage() {
                     if(dislikedVideoIndex!==-1)
                     {
                         updatedUserInfo = await axios.delete(
-                            `https://videoztron.herokuapp.com/api/dislikedvideos/${video._id}`,
+                            `https://videoztron-server.vercel.app/api/dislikedvideos/${video._id}`,
                             {
                                 headers:
                                 {
@@ -235,7 +235,14 @@ function VideoPage() {
                         dispatchLikedVideosList({type: "UPDATE_LIKED_VIDEOS_LIST",payload: updatedUserInfo.data.user.likedVideos})
                         dispatchDislikedVideosList({type: "UPDATE_DISLIKED_VIDEOS_LIST",payload: updatedUserInfo.data.user.dislikedVideos})
                         setVideoLikedStatus("liked")
-                        showToast("success","","Video liked")
+                        let newTitle = title
+                        if(title.length>10)
+                        {
+                            newTitle = title.split('').slice(0,10).join('') + "..."
+                            console.log(newTitle)
+                        }
+                        let likedVideoMessage = "Video liked " + newTitle
+                        showToast("success","",likedVideoMessage)
                     }
                 }
             }
@@ -264,7 +271,7 @@ function VideoPage() {
                 if(videoLikedStatus==="disliked")
                 {
                     let updatedUserInfo = await axios.delete(
-                        `https://videoztron.herokuapp.com/api/dislikedvideos/${video._id}`,
+                        `https://videoztron-server.vercel.app/api/dislikedvideos/${video._id}`,
                         {
                             headers:
                             {
@@ -288,7 +295,7 @@ function VideoPage() {
                 
                     //Add to disliked videos list
                     let updatedUserInfo = await axios.patch(
-                        "https://videoztron.herokuapp.com/api/dislikedvideos",
+                        "https://videoztron-server.vercel.app/api/dislikedvideos",
                         {
                             video
                         },
@@ -308,7 +315,7 @@ function VideoPage() {
                     if(likedVideoIndex!==-1)
                     {
                         updatedUserInfo = await axios.delete(
-                            `https://videoztron.herokuapp.com/api/likedvideos/${video._id}`,
+                            `https://videoztron-server.vercel.app/api/likedvideos/${video._id}`,
                             {
                                 headers:
                                 {
@@ -362,7 +369,7 @@ function VideoPage() {
                     // Item not present in Watch Later
                     // Update in backend and then in frontend
                     let updatedUserInfo = await axios.patch(
-                        "https://videoztron.herokuapp.com/api/watchlater",
+                        "https://videoztron-server.vercel.app/api/watchlater",
                         {
                             video
                         },
@@ -406,7 +413,7 @@ function VideoPage() {
             {
                 // Item already present in watch later list, remove it
                 let updatedUserInfo = await axios.delete(
-                    `https://videoztron.herokuapp.com/api/watchlater/${video._id}`,
+                    `https://videoztron-server.vercel.app/api/watchlater/${video._id}`,
                     {
                         headers:
                         {

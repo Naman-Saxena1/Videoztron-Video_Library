@@ -22,7 +22,7 @@ function Login()
     {
         event.preventDefault();
         axios.post(
-            "https://videoztron.herokuapp.com/api/login",
+            "https://videoztron-server.vercel.app/api/login",
             {
                 userEmail,
                 userPassword

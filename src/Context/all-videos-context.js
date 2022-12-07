@@ -12,7 +12,7 @@ let AllVideosProvider = ({children}) =>
     useEffect(() => {
         try {
           (async () => {
-              const allVideosData = await axios.get('https://videoztron.herokuapp.com/api/home/allVideos')
+              const allVideosData = await axios.get('https://videoztron-server.vercel.app/api/home/allVideos')
               setAllVideosList([...allVideosData.data.allvideos])
           }) ()
         }
