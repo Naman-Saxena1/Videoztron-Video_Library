@@ -101,7 +101,7 @@ function VideoCard({ video, itemInUserHistory, isPlayListCard, playlistId })
                     // Item not present in Watch Later
                     // Update in backend and then in frontend
                     let updatedUserInfo = await axios.patch(
-                        "https://videoztron.herokuapp.com/api/watchlater",
+                        "https://videoztron-server.vercel.app/api/watchlater",
                         {
                             video
                         },
@@ -145,7 +145,7 @@ function VideoCard({ video, itemInUserHistory, isPlayListCard, playlistId })
             {
                 // Item already present in watch later list, remove it
                 let updatedUserInfo = await axios.delete(
-                    `https://videoztron.herokuapp.com/api/watchlater/${video._id}`,
+                    `https://videoztron-server.vercel.app/api/watchlater/${video._id}`,
                     {
                         headers:
                         {
@@ -174,7 +174,7 @@ function VideoCard({ video, itemInUserHistory, isPlayListCard, playlistId })
     const removeVideoFromHistory = async () => {
         
         const updatedUserInfo = await axios.delete(
-            `https://videoztron.herokuapp.com/api/history/${video._id}`,
+            `https://videoztron-server.vercel.app/api/history/${video._id}`,
             {
                 headers : {'x-access-token': localStorage.getItem('token')} 
             }
@@ -213,7 +213,7 @@ function VideoCard({ video, itemInUserHistory, isPlayListCard, playlistId })
     const removeVideoFromPlaylist = async () => {
         
         const updatedUserInfo = await axios.delete(
-            `https://videoztron.herokuapp.com/api/playlist/delete/specificvideo`,
+            `https://videoztron-server.vercel.app/api/playlist/delete/specificvideo`,
             {
                 headers: {'x-access-token':localStorage.getItem("token")},
                 data: {playlistId: playlistId, videoId : _id}

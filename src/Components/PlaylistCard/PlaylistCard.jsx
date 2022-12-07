@@ -16,7 +16,7 @@ function PlaylistCard({playlist})
 
     const deleteThisPlaylist = async () => {
         const updatedUserInfo = await axios.delete(
-            `https://videoztron.herokuapp.com/api/playlist/delete/${playlist._id}`,
+            `https://videoztron-server.vercel.app/api/playlist/delete/${playlist._id}`,
             {
               headers: {'x-access-token':localStorage.getItem('token')}
             }

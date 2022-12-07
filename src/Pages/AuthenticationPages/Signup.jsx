@@ -19,7 +19,7 @@ function Signup()
     {
         event.preventDefault();
         axios.post(
-            "https://videoztron.herokuapp.com/api/signup",
+            "https://videoztron-server.vercel.app/api/signup",
             {
                 newUserName: `${newUserName}`,
                 newUserEmail: `${newUserEmail}`,

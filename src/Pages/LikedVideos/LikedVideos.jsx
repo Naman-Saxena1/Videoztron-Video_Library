@@ -46,7 +46,7 @@ function LikedVideos() {
       {
         (async () => {
           let updatedUserInfo = await axios.get(
-            "https://videoztron.herokuapp.com/api/user",
+            "https://videoztron-server.vercel.app/api/user",
             {
               headers:
               {

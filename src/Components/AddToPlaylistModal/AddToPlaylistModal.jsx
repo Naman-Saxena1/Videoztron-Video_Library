@@ -24,7 +24,7 @@ function AddToPlaylistModal({video, showPlaylistModal, setShowPlaylistModal})
 
     const addVideoToNewPlaylist = async () => {
         const updatedUserInfo = await axios.post(
-            'https://videoztron.herokuapp.com/api/playlist/newplaylist',
+            'https://videoztron-server.vercel.app/api/playlist/newplaylist',
             {
                 video,
                 newPlaylistName
@@ -45,7 +45,7 @@ function AddToPlaylistModal({video, showPlaylistModal, setShowPlaylistModal})
 
     const addVideoToThisExistingPlaylist = async (event, playlistId) => {
         const updatedUserInfo = await axios.patch(
-            "https://videoztron.herokuapp.com/api/playlist",
+            "https://videoztron-server.vercel.app/api/playlist",
             {
                 playlistId,
                 video
